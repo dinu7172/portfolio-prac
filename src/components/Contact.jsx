@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaPaperPlane, FaUser, FaEnvelope, FaComments } from 'react-icons/fa';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,6 @@ const Contact = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors({ ...errors, [name]: '' });
     }
@@ -38,10 +38,13 @@ const Contact = () => {
     const newErrors = validate();
     if (Object.keys(newErrors).length === 0) {
       setIsSubmitting(true);
-      // Here you would typically send the form data to your backend or a service like EmailJS
-      // For this example, we'll just simulate an API call
       try {
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Simulating API call
+        await emailjs.send(
+          'dinesh7171', // Replace with your EmailJS service ID
+          'template_ex2wvjj', // Replace with your EmailJS template ID
+          formData,
+          'tQeakiSJFsxkRDuqI' // Replace with your EmailJS user ID
+        );
         setSubmitMessage('Thank you for your message. I will get back to you soon!');
         setFormData({ name: '', email: '', subject: '', message: '' });
       } catch (error) {
@@ -56,7 +59,7 @@ const Contact = () => {
 
   return (
     <div className="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen py-16 px-4 text-white">
-      <div className="container sm:bg-gray-900 p-4 rounded-2xl mx-auto max-w-2xl">
+      <div className="container mx-auto max-w-2xl">
         <motion.h2
           className="text-4xl font-bold text-center mb-12"
           initial={{ opacity: 0, y: -20 }}
@@ -67,12 +70,12 @@ const Contact = () => {
         </motion.h2>
         <motion.form
           onSubmit={handleSubmit}
-          className="space-y-6"
+          className="space-y-6 bg-gray-900 p-5"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div>
+             <div>
             <label htmlFor="name" className="block text-sm font-medium mb-2 items-center">
               <FaUser className="mr-2" /> Name
             </label>

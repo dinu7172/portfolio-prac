@@ -16,6 +16,15 @@ const Navbar = () => {
     { name: 'Education', icon: <FaGraduationCap />, ref: educationRef },
   ];
 
+  const handleResumeDownload = () => {
+    // Replace '/path-to-your-resume.pdf' with the actual path to your resume file
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Dinesh_Maurya_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <nav className={`sticky top-0 bg-gray-800 p-4 z-50 shadow-md`}>
@@ -50,7 +59,7 @@ const Navbar = () => {
             ))}
           </div>
         </div>
-        <button className="bg-blue-500 hidden md:flex text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">
+        <button onClick={handleResumeDownload} className="bg-blue-500 hidden md:flex text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">
             Resume
           </button>
       </div>
@@ -62,14 +71,17 @@ const Navbar = () => {
             {navLinks.map((link, index) => (
               <a
                 key={index}
-                href={`#${link.name.toLowerCase()}`}
+                // href={`#${link.name.toLowerCase()}`}
+                onClick={() => {scrollTo(link.ref)
+                  setIsOpen(false)
+                }}
                 className="text-white px-4 py-2 w-full text-center rounded-md hover:bg-blue-500 hover:bg-opacity-50 transition duration-300 flex items-center justify-center space-x-2"
               >
                 {link.icon}
                 <span>{link.name}</span>
               </a>
             ))}
-            <button className="bg-blue-500 text-white px-4 py-2 w-full mt-2 rounded-md hover:bg-blue-600 transition duration-300">
+            <button onClick={handleResumeDownload} className="bg-blue-500 text-white px-4 py-2 w-full mt-2 rounded-md hover:bg-blue-600 transition duration-300">
               Resume
             </button>
           </div>

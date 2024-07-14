@@ -10,15 +10,15 @@ const Projects = () => {
       title: 'Modern Ecommerce Site',
       description: 'Large-scale e-commerce platform using JavaScript, Python, Django, and SQLite. Features include coupon codes, payment gateway, modern verification method, and cart functionality.',
       technologies: ['JavaScript', 'Python', 'Django', 'SQLite', 'SMTP', 'RAZORPAY'],
-      github: 'https://github.com/yourusername/ecommerce-site',
-      live: 'https://your-ecommerce-site.com',
+      github: 'https://github.com/dinu7172/ecommerce-site',
+      live: 'https://github.com/dinu7172/ecommerce-site',
     },
     {
       title: 'Promptify',
       description: 'A user-friendly web application built using ReactJS and NextJS to streamline and simplify the process of generating creative prompts for writing or brainstorming purposes.',
       technologies: ['ReactJS', 'NextJS'],
       github: 'https://github.com/dinu7172/promptify',
-      live: 'https://promptify-app.com',
+      live: 'https://promptify-olive.vercel.app/',
     },
     {
         title: 'PriceTracker',
@@ -37,7 +37,7 @@ const Projects = () => {
   ];
 
   return (
-    <div ref={projectsRef} className="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen py-16 px-4 text-white">
+    <div ref={projectsRef} className="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen py-16 text-white">
       <div className="container mx-auto w-full flex flex-col items-center">
         <motion.h2
           className="text-4xl font-bold text-center mb-12"
